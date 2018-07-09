@@ -28,6 +28,8 @@ onready var initial_position = effector.translation.y
 onready var initial_scale = spring.scale.y
 onready var max_displacement = 0.8 * abs( effector.translation.y )
 
+var initial_force = 0
+
 func _ready():
 	Controller.set_status( 5 )
 	if Controller.direction_axis == Controller.HORIZONTAL:
@@ -46,9 +48,10 @@ func _ready():
 
 func _physics_process( delta ):
 	var player_force = Controller.get_axis_values()[ Controller.FORCE ]
-	var displacement_factor = abs( player_force )
+	var displacement_factor = direction * ( player_force - initial_force )
 	var displacement = displacement_factor * max_displacement
-	displacement = clamp( displacement, 0.0, max_displacement )
+	if displacement < -max_displacement: displacement = -max_displacement
+	elif displacement > max_displacement: displacement = max_displacement
 	effector.translation.y = initial_position + displacement
 	spring.scale.y = initial_scale * effector.translation.y / initial_position
 	
@@ -81,3 +84,4 @@ func _on_GUI_game_timeout( timeouts_count ):
 
 func _on_GUI_game_toggle( started ):
 	if not Controller.is_calibrating: target.show()
+	initial_force = Controller.get_axis_values()[ Controller.FORCE ]

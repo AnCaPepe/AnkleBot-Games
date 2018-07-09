@@ -72,6 +72,7 @@ _sections_unfolded = [ "Albedo", "Metallic", "NormalMap" ]
 [sub_resource type="QuadMesh" id=2]
 
 material = SubResource( 1 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector2( 30, 30 )
 
 [sub_resource type="SpatialMaterial" id=3]
@@ -133,6 +134,7 @@ _sections_unfolded = [ "Albedo", "Metallic", "NormalMap" ]
 [sub_resource type="QuadMesh" id=4]
 
 material = SubResource( 3 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector2( 30, 30 )
 
 [sub_resource type="SpatialMaterial" id=5]
@@ -191,6 +193,7 @@ _sections_unfolded = [ "Albedo", "Metallic" ]
 [sub_resource type="CylinderMesh" id=6]
 
 material = SubResource( 5 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 top_radius = 1.0
 bottom_radius = 1.0
 height = 0.3
@@ -253,6 +256,7 @@ _sections_unfolded = [ "Albedo", "Metallic", "Roughness" ]
 [sub_resource type="CylinderMesh" id=8]
 
 material = SubResource( 7 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 top_radius = 1.0
 bottom_radius = 1.0
 height = 0.3
@@ -370,6 +374,7 @@ _sections_unfolded = [ "Albedo", "Emission", "Flags", "Vertex Color" ]
 [sub_resource type="CylinderMesh" id=11]
 
 material = SubResource( 10 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 top_radius = 1.0
 bottom_radius = 1.0
 height = 0.3
@@ -516,7 +521,7 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[node name="Game" type="Spatial"]
+[node name="Game" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 
@@ -723,13 +728,13 @@ _sections_unfolded = [ "Light", "Spot" ]
 [node name="ForcePanel" type="Panel" parent="." index="6"]
 
 self_modulate = Color( 1, 1, 1, 0.498039 )
-anchor_left = 0.0
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 555.0
+margin_left = -85.0
 margin_top = -140.0
-margin_right = -555.0
+margin_right = 85.0
 margin_bottom = -20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
